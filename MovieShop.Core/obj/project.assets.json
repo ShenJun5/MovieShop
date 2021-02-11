@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andre\\source\\repos\\MovieShop\\MovieShop.Core\\MovieShop.Core.csproj",
+      "projectUniqueName": "C:\\Users\\andre\\source\\MovieShop\\MovieShop.Core\\MovieShop.Core.csproj",
       "projectName": "MovieShop.Core",
-      "projectPath": "C:\\Users\\andre\\source\\repos\\MovieShop\\MovieShop.Core\\MovieShop.Core.csproj",
+      "projectPath": "C:\\Users\\andre\\source\\MovieShop\\MovieShop.Core\\MovieShop.Core.csproj",
       "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\andre\\source\\repos\\MovieShop\\MovieShop.Core\\obj\\",
+      "outputPath": "C:\\Users\\andre\\source\\MovieShop\\MovieShop.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",

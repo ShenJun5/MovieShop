@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andre\\source\\repos\\MovieShop\\MovieShop.Infrastructure\\MovieShop.Infrastructure.csproj": {}
+    "C:\\Users\\andre\\source\\MovieShop\\MovieShop.Infrastructure\\MovieShop.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andre\\source\\repos\\MovieShop\\MovieShop.Infrastructure\\MovieShop.Infrastructure.csproj": {
+    "C:\\Users\\andre\\source\\MovieShop\\MovieShop.Infrastructure\\MovieShop.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andre\\source\\repos\\MovieShop\\MovieShop.Infrastructure\\MovieShop.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\andre\\source\\MovieShop\\MovieShop.Infrastructure\\MovieShop.Infrastructure.csproj",
         "projectName": "MovieShop.Infrastructure",
-        "projectPath": "C:\\Users\\andre\\source\\repos\\MovieShop\\MovieShop.Infrastructure\\MovieShop.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\andre\\source\\MovieShop\\MovieShop.Infrastructure\\MovieShop.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andre\\source\\repos\\MovieShop\\MovieShop.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\andre\\source\\MovieShop\\MovieShop.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
