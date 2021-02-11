@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "DBHGYaFQZsREkCDcT4VlKkK0N25PpG3Xg64yGX4zBtFB+3Tt7k1DcyueJhFXXY+UM7gNqK9IxmF1ZR5pw5re+w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\andre\\source\\repos\\MovieShop\\MovieShop.MVC\\MovieShop.MVC.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\andre\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.12\\microsoft.netcore.app.host.win-x64.3.1.12.nupkg.sha512"
+  ],
+  "logs": []
+}
