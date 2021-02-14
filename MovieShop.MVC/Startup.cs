@@ -8,6 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MovieShop.Core.ServiceInterface;
+using MovieShop.Core.RepositoryInterface;
+using MovieShop.Infrastructure.Service;
+using MovieShop.Infrastructure.Repositories;
 
 namespace MovieShop.MVC
 {
@@ -24,6 +28,8 @@ namespace MovieShop.MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddTransient<IMovieService, MovieService>();
+            services.AddTransient<IMovieRepository, MovieRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
