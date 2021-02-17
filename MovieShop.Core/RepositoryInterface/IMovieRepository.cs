@@ -7,7 +7,7 @@ namespace MovieShop.Core.RepositoryInterface
 {
     public interface IMovieRepository
     {
-        IEnumerable<Movie> GetTopRevenueMovies();
-        IEnumerable<Movie> GetHighestRatedMovies();
+ //       IEnumerable<Movie> GetTopRevenueMovies();
+ //       IEnumerable<Movie> GetHighestRatedMovies();
     }
 }

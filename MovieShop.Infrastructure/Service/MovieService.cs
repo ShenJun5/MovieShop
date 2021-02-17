@@ -7,9 +7,11 @@ using MovieShop.Core.RepositoryInterface;
 
 namespace MovieShop.Infrastructure.Service
 {
+    
     public class MovieService : IMovieService
+    
     {
-
+    /*
         private readonly IMovieRepository _movieRepository;
 
         public MovieService(IMovieRepository movieRepository)
@@ -22,5 +24,7 @@ namespace MovieShop.Infrastructure.Service
             var movies = _movieRepository.GetTopRevenueMovies();
             return movies;
         }
+    */
     }
+    
 }

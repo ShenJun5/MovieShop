@@ -7,6 +7,6 @@ namespace MovieShop.Core.ServiceInterface
 {
     public interface IMovieService
     {
-        IEnumerable<Movie> GetHighestGrossingMovies();
+//        IEnumerable<Movie> GetHighestGrossingMovies();
     }
 }
