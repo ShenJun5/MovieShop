@@ -14,6 +14,7 @@ namespace MovieShop.Core.RepositoryInterface
         IEnumerable<T> ListAsync(Expression<Func<T, bool>> filter);
         int GetCountAsync(Expression<Func<T, bool>> filter = null);
         bool GetExistsAsync(Expression<Func<T, bool>> filter = null);
+
         // C Creating
         T AddAsync(T entity);
         // U Update

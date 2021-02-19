@@ -14,6 +14,8 @@ using MovieShop.Infrastructure.Service;
 using MovieShop.Infrastructure.Repositories;
 using MovieShop.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using MovieShop.Core.Entities;
+
 
 namespace MovieShop.MVC
 {
@@ -30,8 +32,11 @@ namespace MovieShop.MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddTransient<IMovieService, MovieService>();
+            services.AddTransient<IMovieService, MovieService>();  // whenever we see IMovieService as a constructor parameter, will replace that with MovieService Class; change here if we want to pass a new class as parameters
             services.AddTransient<IMovieRepository, MovieRepository>();
+
+            services.AddTransient<IGenreService, GenreService>();
+            services.AddTransient<IAsyncRepository<Genre>, EfRepository<Genre>>();
 
             services.AddDbContext<MovieShopDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("MovieShopDbConnection")));
 

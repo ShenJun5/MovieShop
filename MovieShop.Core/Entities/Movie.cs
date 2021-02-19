@@ -24,7 +24,14 @@ namespace MovieShop.Core.Entities
         public DateTime? UpdatedDate { get; set; }
         public string UpdatedBy { get; set; }
         public string CreatedBy { get; set; }
+
+        //Navigable properties
         public ICollection<Trailer> Trailers { get; set; }
         public ICollection<Genre> Genres { get; set; }
+        public ICollection<MovieCast> MovieCasts { get; set; }
+
+        //duojia
+        public ICollection<Review> Reviews { get; set; }
+        public ICollection<Purchase> Purchases { get; set; }
     }
 }
