@@ -79,3 +79,4 @@ C:\Users\andre\source\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Movie
 C:\Users\andre\source\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Movies\Index.cshtml.g.cs
 C:\Users\andre\source\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Movies\TopRevenueMovies.cshtml.g.cs
 C:\Users\andre\source\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Shared\Components\Genres\Default.cshtml.g.cs
+C:\Users\andre\source\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
