@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MovieShop.Core.Entities
 {
-    [Table("Genre")]
+    [Table(name:"Genre")]
     public class Genre
     {
         public int Id { get; set; }

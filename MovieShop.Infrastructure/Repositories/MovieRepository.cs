@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MovieShop.Core.Entities;
 using MovieShop.Core.RepositoryInterface;
@@ -15,19 +16,19 @@ namespace MovieShop.Infrastructure.Repositories
         {
 
         }
-        public IEnumerable<Movie> GetTopRatedMovies()
+        public async Task<IEnumerable<Movie>> GetTopRatedMovies()
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Movie> GetTopRevenueMovies()
+        public async Task<IEnumerable<Movie>> GetTopRevenueMovies()
         {
-            return _dbContext.Movies.OrderByDescending(m => m.Revenue).Take(25);
+            return await _dbContext.Movies.OrderByDescending(m => m.Revenue).Take(25).ToListAsync();
         }
 
-        public override Movie GetByIdAsync(int id)
+        public override async Task<Movie> GetByIdAsync(int id)
         {
-            return _dbContext.Movies.Include(m => m.MovieCasts).ThenInclude(m => m.Cast).Include(m => m.Genres).FirstOrDefault(m => m.Id == id);
+            return await _dbContext.Movies.Include(m => m.MovieCasts).ThenInclude(m => m.Cast).Include(m => m.Genres).FirstOrDefaultAsync(m => m.Id == id);
         }
     }
     

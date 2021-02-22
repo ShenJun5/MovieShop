@@ -4,6 +4,7 @@ using MovieShop.Core.ServiceInterface;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MovieShop.Infrastructure.Service
 {
@@ -14,9 +15,9 @@ namespace MovieShop.Infrastructure.Service
         {
             _genreRepository = genreRepository;
         }
-        public IEnumerable<Genre> GetAllGenres()
+        public async Task<IEnumerable<Genre>> GetAllGenres()
         {
-            var genres = _genreRepository.ListAllAsync();
+            var genres = await _genreRepository.ListAllAsync();
             return genres;
         }
     }

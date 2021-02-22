@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MovieShop.Core.ServiceInterface;
 using MovieShop.MVC.Models;
 using System;
 using System.Collections.Generic;
@@ -12,15 +13,20 @@ namespace MovieShop.MVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IMovieService _movieService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IMovieService movieService)
         {
             _logger = logger;
+            _movieService = movieService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            // get the movies from movie service and send those list of movies to the View
+            var topMovies = await _movieService.GetTop25GrossingMovies();
+            // ViewBag, ViewData and Models
+            return View(topMovies);
         }
 
         public IActionResult Privacy()
