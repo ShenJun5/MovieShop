@@ -15,7 +15,7 @@ using MovieShop.Infrastructure.Repositories;
 using MovieShop.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using MovieShop.Core.Entities;
-
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace MovieShop.MVC
 {
@@ -31,15 +31,33 @@ namespace MovieShop.MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Registering our classes for interrfaces to be used across our application
+            //.NET CORE built-int Dependency Injection
+            //.NET Framework does not havev built-in DI, will need download 3rd party packages or IOC, like Ninect, Autofac...
             services.AddControllersWithViews();
+
             services.AddTransient<IMovieService, MovieService>();  // whenever we see IMovieService as a constructor parameter, will replace that with MovieService Class; change here if we want to pass a new class as parameters
             services.AddTransient<IMovieRepository, MovieRepository>();
 
             services.AddTransient<IGenreService, GenreService>();
             services.AddTransient<IAsyncRepository<Genre>, EfRepository<Genre>>();
 
-            services.AddDbContext<MovieShopDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("MovieShopDbConnection")));
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ICryptoService, CryptoService>();
+            services.AddTransient<ICurrentLogedInUser, CurrentLogedInUser>();
 
+            services.AddDbContext<MovieShopDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("MovieShopDbConnection")));
+            services.AddHttpContextAccessor();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
+                option =>
+                {
+                    option.Cookie.Name = "MoviShopAuthCookie";
+                    option.ExpireTimeSpan = TimeSpan.FromHours(2);
+                    option.LoginPath = "/Account/login";
+                }
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +77,8 @@ namespace MovieShop.MVC
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

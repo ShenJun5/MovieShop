@@ -23,18 +23,16 @@ namespace MovieShop.Core.Models.Request
 		[Compare("Password", ErrorMessage = "Passwords must match")]
         public string RePassword { get; set; }
 
-
         [Required(ErrorMessage = "First Name cannot be empty")]
 		[StringLength(50)]
 		public string FirstName { get; set; }
-
 
 		[Required(ErrorMessage = "Last Name cannot be empty")]
 		[StringLength(50)]
 		public string LastName { get; set; }
 
-
-
+		[DataType(DataType.Date)]
 		public DateTime DateOfBirth { get; set; }
-	}
+       // public string HashedPassword { get; set; }
+    }
 }
