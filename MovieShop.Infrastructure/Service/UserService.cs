@@ -15,11 +15,67 @@ namespace MovieShop.Infrastructure.Service
     {
         private readonly IUserRepository _userRepository;
         private readonly ICryptoService _cryptoService;
-        public UserService(IUserRepository userRepository, ICryptoService cryptoService)
+        private readonly IAsyncRepository<Review> _reviewRepository;
+        private readonly ICurrentLogedInUser _currentLogedInUser;
+        public UserService(IUserRepository userRepository, ICryptoService cryptoService, IAsyncRepository<Review> reviewRepository, ICurrentLogedInUser currentLogedInUser)
         {
             _userRepository = userRepository;
             _cryptoService = cryptoService;
+            _reviewRepository = reviewRepository;
+            _currentLogedInUser = currentLogedInUser;
         }
+
+        public async Task AddMovieReview(ReviewRequestModel reviewRequest)
+        {
+            var movieReview = new Review
+            {
+                UserId = reviewRequest.UserId,
+                MovieId = reviewRequest.MovieId,
+                Rating = reviewRequest.Rating,
+                ReviewText = reviewRequest.ReviewText
+            };
+            await _reviewRepository.AddAsync(movieReview);
+        }
+
+        public async Task<IEnumerable<ReviewResponseModel>> GetAllReviewsByUser(int id)
+        {
+            var reviews = await _reviewRepository.ListAsync(r => r.UserId == id);
+            var response = new List<ReviewResponseModel>();
+            foreach (var movie in reviews)
+            {
+                response.Add(new ReviewResponseModel
+                {
+                    UserId = movie.UserId,
+                    MovieId = movie.MovieId,
+                    Rating = movie.Rating,
+                    ReviewText = movie.ReviewText
+                });
+            }
+            return response;
+        }
+
+        public async Task<UserRegisterResponseModel> GetUserDetails(int id)
+        {
+            var user = await _userRepository.GetByIdAsync(id);
+            if (user == null)
+            {
+                return null;
+            }
+            var response = new UserRegisterResponseModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+            return response;
+        }
+
+        public Task<bool> PurchaseMovie(PurchaseRequestModel purchaseRequest)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> RegisterUser(UserRegisterRequestModel userRegisterRequestModel)
         {
             // 1. we need to check whether that email exists or not
@@ -69,7 +125,8 @@ namespace MovieShop.Infrastructure.Service
                     Email = dbUser.Email,
                     FirstName = dbUser.FirstName,
                     LastName = dbUser.LastName,
-                    DateOfBirth = dbUser.DateOfBirth
+                    DateOfBirth = dbUser.DateOfBirth,
+                    Roles = null
                 };
                 return loginResponse;
             }

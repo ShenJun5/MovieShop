@@ -7,11 +7,13 @@ using MovieShop.Core.RepositoryInterface;
 using MovieShop.Core.Models.Response;
 using MovieShop.Infrastructure.Service;
 using System.Threading.Tasks;
+using MovieShop.Core.Models.Request;
+using System.Linq;
 
 namespace MovieShop.Infrastructure.Service
-{ 
-    public class MovieService : IMovieService   
-    { 
+{
+    public class MovieService : IMovieService
+    {
         private readonly IMovieRepository _movieRepository;
         //Dependency Injection by constructor injection; why readonly: only change in declaration(inside constructor)
         //MovieService movieservice = new MovieService (); will not compile because we have a parameter(a class that implement IMovieRepository)
@@ -21,11 +23,55 @@ namespace MovieShop.Infrastructure.Service
         {
             _movieRepository = movieRepository;
         }
-        
+
+        public async Task<MovieDetailsResponseModel> CreateMovie(MovieCreateRequest movieCreateRequest)
+        {
+            var dbMovie = await _movieRepository.GetMovieByTitle(movieCreateRequest.Title);
+            if (dbMovie != null && string.Equals(dbMovie.Title, movieCreateRequest.Title, StringComparison.CurrentCultureIgnoreCase))
+                throw new Exception("Movie Already Exits");
+
+            var movie = new Movie
+            {
+                Id = movieCreateRequest.Id,
+                Title = movieCreateRequest.Title,
+                PosterUrl = movieCreateRequest.PosterUrl,
+                BackdropUrl = movieCreateRequest.BackdropUrl,
+                //Rating = movie.Rating,
+                Overview = movieCreateRequest.Overview,
+                Tagline = movieCreateRequest.Tagline,
+                Budget = movieCreateRequest.Budget,
+                Revenue = movieCreateRequest.Revenue,
+                ImdbUrl = movieCreateRequest.ImdbUrl,
+                TmdbUrl = movieCreateRequest.TmdbUrl,
+                ReleaseDate = movieCreateRequest.ReleaseDate,
+                RunTime = movieCreateRequest.RunTime,
+                Price = movieCreateRequest.Price
+            };
+            var createMovie = await _movieRepository.AddAsync(movie);
+            var response = new MovieDetailsResponseModel
+            {
+                Id = createMovie.Id,
+                Title = createMovie.Title,
+                PosterUrl = createMovie.PosterUrl,
+                BackdropUrl = createMovie.BackdropUrl,
+                //Rating = movie.Rating,
+                Overview = createMovie.Overview,
+                Tagline = createMovie.Tagline,
+                Budget = createMovie.Budget,
+                Revenue = createMovie.Revenue,
+                ImdbUrl = createMovie.ImdbUrl,
+                TmdbUrl = createMovie.TmdbUrl,
+                ReleaseDate = createMovie.ReleaseDate,
+                RunTime = createMovie.RunTime,
+                Price = createMovie.Price
+            };
+            return response;
+        }
+
         public async Task<MovieDetailsResponseModel> GetMovieById(int id)
         {
             var movieDetails = new MovieDetailsResponseModel();
-            var movie =await _movieRepository.GetByIdAsync(id);
+            var movie = await _movieRepository.GetByIdAsync(id);
 
             // map movie entity to MovieDetailsResponseModel
             movieDetails.Id = movie.Id;
@@ -67,7 +113,7 @@ namespace MovieShop.Infrastructure.Service
 
         public async Task<IEnumerable<MovieCardResponseModel>> GetTop25GrossingMovies()
         {
-            var movies =await _movieRepository.GetTopRevenueMovies();
+            var movies = await _movieRepository.GetTopRevenueMovies();
             var movieCardResponseModel = new List<MovieCardResponseModel>();
             foreach (var movie in movies)
             {
@@ -82,6 +128,61 @@ namespace MovieShop.Infrastructure.Service
             }
             return movieCardResponseModel;
         }
+
+        public async Task<IEnumerable<MovieRatingResponseModel>> GetTopRatedMovies()
+        {
+            var movies = await _movieRepository.GetTopRatedMovies();
+
+            var movieResponse = new List<MovieRatingResponseModel>();
+            foreach (var movie in movies)
+            {
+                movieResponse.Add(new MovieRatingResponseModel
+                {
+                    Id = movie.Id,
+                    PosterUrl = movie.PosterUrl,
+                    Title = movie.Title,
+                    ReleaseDate = movie.ReleaseDate,
+                    Rating = movie.Rating
+                });
+            }
+            return movieResponse;
+        }
+
+
+        public async Task<IEnumerable<MovieCardResponseModel>> GetMoviesByGenre(int genreId)
+        {
+            var movies = await _movieRepository.GetMoviesByGenre(genreId);
+            if (!movies.Any())
+                throw new Exception("No Movies Found");
+            var response = new List<MovieCardResponseModel>();
+            foreach (var movie in movies)
+            {
+                response.Add(new MovieCardResponseModel
+                {
+                    Id = movie.Id,
+                    Title = movie.Title,
+                    PosterUrl = movie.PosterUrl,
+                    Revenue = movie.Revenue
+                });
+            }
+            return response;
+        }
+
+        public async Task<IEnumerable<ReviewResponseModel>> GetReviewsForMovie(int id)
+        {
+            var reviews = await _movieRepository.GetMovieReviews(id);
+            var reviewDetails = new List<ReviewResponseModel>();
+            foreach (var review in reviews)
+            {
+                reviewDetails.Add(new ReviewResponseModel
+                {
+                    UserId = review.UserId,
+                    MovieId = review.MovieId,
+                    Rating = review.Rating,
+                    ReviewText = review.ReviewText
+                });
+            }
+            return reviewDetails;
+        }
     }
-    
 }

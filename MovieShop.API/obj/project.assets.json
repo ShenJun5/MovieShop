@@ -11,6 +11,27 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Cryptography.Internal/5.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Cryptography.KeyDerivation/5.0.3": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.Internal": "5.0.3"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
+        }
+      },
       "Microsoft.CSharp/4.7.0": {
         "type": "package",
         "compile": {
@@ -1590,6 +1611,39 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "MovieShop.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "5.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MovieShop.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MovieShop.Core.dll": {}
+        }
+      },
+      "MovieShop.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "5.0.3",
+          "Microsoft.EntityFrameworkCore": "5.0.3",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.3",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.3",
+          "MovieShop.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MovieShop.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MovieShop.Infrastructure.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -1608,6 +1662,44 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Microsoft.AspNetCore.Cryptography.Internal/5.0.3": {
+      "sha512": "4LtW8tSYWbwSXnerW/s2xLtEYJp2T3fPNfmn6JbFPXTaRQmOcEMv0rsZ3WgJsItjI5vfJfPGRfN/rFmX8YvGiA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.cryptography.internal/5.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/net461/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "lib/net5.0/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "microsoft.aspnetcore.cryptography.internal.5.0.3.nupkg.sha512",
+        "microsoft.aspnetcore.cryptography.internal.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Cryptography.KeyDerivation/5.0.3": {
+      "sha512": "rFMWHdgzaOnoNcHoKWzwpFv/7l3m6Xm8d4RDp8UbH5zNIVCGWs+NPjGQPtq42oVyWpWu3NfmMd6KXca9En3u0g==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.cryptography.keyderivation/5.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/net461/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "lib/net5.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "microsoft.aspnetcore.cryptography.keyderivation.5.0.3.nupkg.sha512",
+        "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
       ]
     },
     "Microsoft.CSharp/4.7.0": {
@@ -5974,6 +6066,16 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "MovieShop.Core/1.0.0": {
+      "type": "project",
+      "path": "../MovieShop.Core/MovieShop.Core.csproj",
+      "msbuildProject": "../MovieShop.Core/MovieShop.Core.csproj"
+    },
+    "MovieShop.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../MovieShop.Infrastructure/MovieShop.Infrastructure.csproj",
+      "msbuildProject": "../MovieShop.Infrastructure/MovieShop.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5983,6 +6085,8 @@
       "Microsoft.EntityFrameworkCore.Relational >= 5.0.3",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.3",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.3",
+      "MovieShop.Core >= 1.0.0",
+      "MovieShop.Infrastructure >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.0.5"
     ]
   },
@@ -6012,7 +6116,14 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\andre\\source\\MovieShop\\MovieShop.Core\\MovieShop.Core.csproj": {
+              "projectPath": "C:\\Users\\andre\\source\\MovieShop\\MovieShop.Core\\MovieShop.Core.csproj"
+            },
+            "C:\\Users\\andre\\source\\MovieShop\\MovieShop.Infrastructure\\MovieShop.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\andre\\source\\MovieShop\\MovieShop.Infrastructure\\MovieShop.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

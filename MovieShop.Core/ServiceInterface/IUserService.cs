@@ -11,5 +11,9 @@ namespace MovieShop.Core.ServiceInterface
     {
         Task<bool> RegisterUser(UserRegisterRequestModel userRegisterRequestModel);
         Task<LoginResponseModel> ValidateUser(LoginRequestModel loginRequestModel);
+        Task<bool> PurchaseMovie(PurchaseRequestModel purchaseRequest);
+        Task AddMovieReview(ReviewRequestModel reviewRequest);
+        Task<UserRegisterResponseModel> GetUserDetails(int id);
+        Task<IEnumerable<ReviewResponseModel>> GetAllReviewsByUser(int id);
     }
 }

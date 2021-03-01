@@ -30,6 +30,8 @@
           "Microsoft.EntityFrameworkCore.Relational": "5.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.3",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.3",
+          "MovieShop.Core": "1.0.0",
+          "MovieShop.Infrastructure": "1.0.0",
           "Swashbuckle.AspNetCore": "6.0.5",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
@@ -47,8 +49,6 @@
           "Microsoft.AspNetCore.Connections.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.CookiePolicy": "5.0.0.0",
           "Microsoft.AspNetCore.Cors": "5.0.0.0",
-          "Microsoft.AspNetCore.Cryptography.Internal": "5.0.0.0",
-          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "5.0.0.0",
           "Microsoft.AspNetCore.DataProtection.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.DataProtection": "5.0.0.0",
           "Microsoft.AspNetCore.DataProtection.Extensions": "5.0.0.0",
@@ -326,6 +326,31 @@
             "assemblyVersion": "2.8.0.0",
             "fileVersion": "2.8.26.1919"
           }
+        }
+      },
+      "Microsoft.AspNetCore.Cryptography.Internal/5.0.3": {
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.321.7303"
+          }
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Cryptography.KeyDerivation/5.0.3": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.Internal": "5.0.3"
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.321.7303"
+          }
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
         }
       },
       "Microsoft.CSharp/4.7.0": {},
@@ -1367,6 +1392,32 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "MovieShop.Core/1.0.0": {
+        "dependencies": {
+          "System.ComponentModel.Annotations": "5.0.0"
+        },
+        "runtime": {
+          "MovieShop.Core.dll": {}
+        },
+        "compile": {
+          "MovieShop.Core.dll": {}
+        }
+      },
+      "MovieShop.Infrastructure/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "5.0.3",
+          "Microsoft.EntityFrameworkCore": "5.0.3",
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.3",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.3",
+          "MovieShop.Core": "1.0.0"
+        },
+        "runtime": {
+          "MovieShop.Infrastructure.dll": {}
+        },
+        "compile": {
+          "MovieShop.Infrastructure.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -1460,18 +1511,6 @@
       "Microsoft.AspNetCore.Cors/5.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Cors.dll": {}
-        },
-        "compileOnly": true
-      },
-      "Microsoft.AspNetCore.Cryptography.Internal/5.0.0.0": {
-        "compile": {
-          "Microsoft.AspNetCore.Cryptography.Internal.dll": {}
-        },
-        "compileOnly": true
-      },
-      "Microsoft.AspNetCore.Cryptography.KeyDerivation/5.0.0.0": {
-        "compile": {
-          "Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
         },
         "compileOnly": true
       },
@@ -3068,6 +3107,20 @@
       "path": "humanizer.core/2.8.26",
       "hashPath": "humanizer.core.2.8.26.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Cryptography.Internal/5.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4LtW8tSYWbwSXnerW/s2xLtEYJp2T3fPNfmn6JbFPXTaRQmOcEMv0rsZ3WgJsItjI5vfJfPGRfN/rFmX8YvGiA==",
+      "path": "microsoft.aspnetcore.cryptography.internal/5.0.3",
+      "hashPath": "microsoft.aspnetcore.cryptography.internal.5.0.3.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Cryptography.KeyDerivation/5.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rFMWHdgzaOnoNcHoKWzwpFv/7l3m6Xm8d4RDp8UbH5zNIVCGWs+NPjGQPtq42oVyWpWu3NfmMd6KXca9En3u0g==",
+      "path": "microsoft.aspnetcore.cryptography.keyderivation/5.0.3",
+      "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.5.0.3.nupkg.sha512"
+    },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",
       "serviceable": true,
@@ -3782,6 +3835,16 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
+    "MovieShop.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MovieShop.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
@@ -3858,16 +3921,6 @@
       "sha512": ""
     },
     "Microsoft.AspNetCore.Cors/5.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.AspNetCore.Cryptography.Internal/5.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.AspNetCore.Cryptography.KeyDerivation/5.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

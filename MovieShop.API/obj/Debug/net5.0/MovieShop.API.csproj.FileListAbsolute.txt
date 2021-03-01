@@ -59,3 +59,9 @@ C:\Users\andre\source\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.dll
 C:\Users\andre\source\MovieShop\MovieShop.API\obj\Debug\net5.0\ref\MovieShop.API.dll
 C:\Users\andre\source\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.pdb
 C:\Users\andre\source\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.genruntimeconfig.cache
+C:\Users\andre\source\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\andre\source\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\andre\source\MovieShop\MovieShop.API\bin\Debug\net5.0\MovieShop.Core.dll
+C:\Users\andre\source\MovieShop\MovieShop.API\bin\Debug\net5.0\MovieShop.Infrastructure.dll
+C:\Users\andre\source\MovieShop\MovieShop.API\bin\Debug\net5.0\MovieShop.Core.pdb
+C:\Users\andre\source\MovieShop\MovieShop.API\bin\Debug\net5.0\MovieShop.Infrastructure.pdb
