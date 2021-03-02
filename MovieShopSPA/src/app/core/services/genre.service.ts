@@ -13,6 +13,6 @@ export class GenreService {
   getAllGenres(): Observable<Genre[]> {
     // make a call to API to get Json data and wrap it in Genre arry and return
     // we call our base ApiService which is gonna call our API using HttpClient class
-    return this.apiService.getAll('/genres');
+    return this.apiService.getAll('genres');
   }
 }

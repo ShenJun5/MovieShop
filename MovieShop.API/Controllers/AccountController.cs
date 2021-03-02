@@ -15,10 +15,12 @@ namespace MovieShop.API.Controllers
     {
 
         private readonly IUserService _userService;
+        private readonly IJwtService _jwtService;
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, IJwtService jwtService)
         {
             _userService = userService;
+            _jwtService = jwtService;
         }
 
         [HttpPost]
@@ -43,6 +45,16 @@ namespace MovieShop.API.Controllers
                 return NotFound("No User Found");
             }
             return Ok(user);
+        }
+
+        [HttpPost("login")]
+        public async Task<ActionResult> LoginAsync([FromBody] LoginRequestModel loginRequest)
+        {
+            var user = await _userService.ValidateUser(loginRequest);
+            if (user == null) return Unauthorized();
+
+            var tokenObject = new { token = _jwtService.GenerateJWT(user) };
+            return Ok(tokenObject);
         }
     }
 }
